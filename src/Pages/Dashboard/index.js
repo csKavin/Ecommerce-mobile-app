@@ -12,19 +12,25 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { FaBox, FaShoppingCart, FaUsers, FaSignOutAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const drawerWidth = 240;
 
 
 
 export default function Dashboard({children}) {
+  const navigate = useNavigate();
   const menuItems = [
     { name: "Products", icon: <FaBox />, path: "/products" },
     { name: "Orders", icon: <FaShoppingCart />, path: "/orders" },
     { name: "Users", icon: <FaUsers />, path: "/users" },
     { name: "Logout", icon: <FaSignOutAlt />, path: "/logout" },
   ];
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken"); // Example: Remove authentication token
+    navigate("/admin"); // Redirect to login page
+  };
 
   return (
       <Box sx={{ display: "flex" }}>
@@ -53,15 +59,24 @@ export default function Dashboard({children}) {
           <Toolbar />
           <Divider />
           <List>
-            {menuItems.map((item) => (
+          {menuItems.map((item) =>
+            item.isLogout ? (
+              <ListItem key={item.name} disablePadding>
+                <ListItemButton onClick={handleLogout}>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.name} />
+                </ListItemButton>
+              </ListItem>
+            ) : (
               <ListItem key={item.name} disablePadding>
                 <ListItemButton component={Link} to={item.path}>
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.name} />
                 </ListItemButton>
               </ListItem>
-            ))}
-          </List>
+            )
+          )}
+        </List>
         </Drawer>
 
         {/* Main Content Area with Routing */}

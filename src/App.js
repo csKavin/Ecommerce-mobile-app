@@ -5,6 +5,7 @@ import Dashboard from "./Pages/Dashboard";
 import Products from "./Pages/Products";
 import Orders from "./Pages/Orders";
 import Users from "./Pages/Users";
+import AuthScreen from "./Pages/LoginPage";
 
 const DashboardLayout = () => (
   <Dashboard>
@@ -17,7 +18,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/admin" element={<LoginScreen />} />
+        <Route path="/admin" element={<AuthScreen isRegister={false}/>} />
         <Route path="*" element={<Navigate to="/admin" />} />
 
         {/* Protected Routes */}

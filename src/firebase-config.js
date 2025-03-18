@@ -4,15 +4,14 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBPG3ktuMgOq89fI6JX46SonSLo_OfmsSc",
-  authDomain: "liza-b1ea7.firebaseapp.com",
-  projectId: "liza-b1ea7",
-  storageBucket: "liza-b1ea7.firebasestorage.app",
-  messagingSenderId: "257549867089",
-  appId: "1:257549867089:web:05588701b5ccb79527c070",
-  measurementId: "G-2KEHGC4M53",
+  apiKey: "AIzaSyAh5jmsIcm4ht4hMnh3BDnxkPtB5T4PBJ8",
+  authDomain: "ess-700a8.firebaseapp.com",
+  projectId: "ess-700a8",
+  storageBucket: "ess-700a8.firebasestorage.app",
+  messagingSenderId: "785965095537",
+  appId: "1:785965095537:web:1a7fae17fc2193fb9859d0",
+  measurementId: "G-7FM27VMLT9"
 };
-
 const app = initializeApp(firebaseConfig);
 export const storageBucket = getStorage(app);
 export const auth = getAuth(app);
