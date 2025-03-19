@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Box, Button, Typography, Drawer, TextField, FormControl, InputLabel, Select, MenuItem, IconButton, Modal, Paper } from "@mui/material";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { Box, Button, Typography, Drawer, TextField,  IconButton, Modal, Paper } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
@@ -19,7 +18,7 @@ const Products = () => {
     image: null,
   });
 
-  const [imagePreview, setImagePreview] = useState(null);
+  // const [imagePreview, setImagePreview] = useState(null);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [open, setOpen] = useState(false);
   const [rows, setRows] = useState([]);
@@ -63,13 +62,13 @@ const Products = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFormData({ ...formData, image: file });
-      setImagePreview(URL.createObjectURL(file));
-    }
-  };
+  // const handleImageUpload = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     setFormData({ ...formData, image: file });
+  //     setImagePreview(URL.createObjectURL(file));
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     let payload = {
@@ -96,6 +95,7 @@ const Products = () => {
 
       try {
         const response = await addData(collections.PRODUCTS, payload, ""); // Awaiting the async function
+        console.log(response);
         alert("Product added successfully");
         getDatas();
       } catch (error) {
@@ -176,7 +176,7 @@ const Products = () => {
         console.log(params?.row, "sidjoishnoi");
         return (
           <>
-            <img src={params?.row?.image} width={"100px"} height={"100px"} />
+            <img src={params?.row?.image} width={"100px"} height={"100px"} alt="imageX"/>
           </>
         );
       },
@@ -285,7 +285,7 @@ const Products = () => {
                 <strong>Amount:</strong> ${selectedOrder.price}
               </Typography>
               <Typography>
-                <strong>Status:</strong> <img src={selectedOrder.image} width={"100"} height={"100"}/>
+                <strong>Status:</strong> <img src={selectedOrder.image} alt="image2" width={"100"} height={"100"}/>
               </Typography>
             </Box>
           )}
