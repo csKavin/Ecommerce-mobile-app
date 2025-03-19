@@ -6,7 +6,11 @@ import { collections } from "../../firebase-config";
 
 const columns = [
   { field: "id", headerName: "ID", flex: 1 },
+  { field: "name", headerName: "name", flex: 1 },
   { field: "email", headerName: "Email", flex: 1 },
+  { field: "contact", headerName: "Contact", flex: 1 },
+  { field: "address", headerName: "Address", flex: 1 },
+  { field: "dob", headerName: "dob", flex: 1 },
   { field: "role", headerName: "Role", flex: 1 },
   { field: "createdAt", headerName: "CreatedAt", flex: 1 },
 ];
@@ -31,6 +35,10 @@ const Users = () => {
 
         return {
           email : item.email,
+          name : item.name,
+          contact : item.contact,
+          dob : item.dob,
+          address : item.address,
           id : item.uid,
           createdAt : item.createdAt ? new Date(item.createdAt.seconds * 1000).toLocaleString() : "NA",
           role: item.role
